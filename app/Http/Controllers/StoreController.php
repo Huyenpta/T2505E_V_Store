@@ -24,12 +24,13 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'item_code' => 'required|max:6',
-            'item_name' => 'required|max:50',
+            'item_code' => ['required', 'max:6', 'regex:/^[a-zA-Z0-9]+$/'], // chỉ cho phép chữ và số
+            'item_name' => ['required', 'max:50', 'regex:/^[a-zA-Z0-9\s]+$/'], // chữ, số và khoảng trắng
             'quantity' => 'required|numeric|min:0',
             'expired_date' => 'required|date',
             'note' => 'nullable|max:60',
         ]);
+
 
         ItemSale::create($request->all());
 
@@ -46,8 +47,8 @@ class StoreController extends Controller
     public function update(Request $request, ItemSale $store)
     {
         $request->validate([
-            'item_code' => 'required|max:6',
-            'item_name' => 'required|max:50',
+            'item_code' => ['required', 'max:6', 'regex:/^[a-zA-Z0-9]+$/'], // chỉ cho phép chữ và số
+            'item_name' => ['required', 'max:50', 'regex:/^[a-zA-Z0-9\s]+$/'], // chữ, số và khoảng trắng
             'quantity' => 'required|numeric|min:0',
             'expired_date' => 'required|date',
             'note' => 'nullable|max:60',

@@ -36,18 +36,16 @@
                         <td>{{ \Carbon\Carbon::parse($item->expired_date)->format('d/m/Y') }}</td>
                         <td>{{ $item->note }}</td>
                         <td class="action-icons">
-                            <a href="{{ route('store.edit', $item->id) }}" class="btn btn-warning btn-sm" title="Edit">
-                                Edit
-                            </a>
+                            <a href="{{ route('store.edit', $item->id) }}" class="icon-emoji" title="Edit">✏️</a>
+
                             <form action="{{ route('store.destroy', $item->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" title="Delete"
-                                    onclick="return confirm('Delete this item?')">
-                                    Delete
-                                </button>
+                                <button type="submit" class="icon-emoji-btn" title="Delete"
+                                    onclick="return confirm('Delete this item?')">🗑️</button>
                             </form>
                         </td>
+
                     </tr>
                 @empty
                     <tr>
@@ -97,16 +95,44 @@
         background-color: #f9f9f9;
     }
 
+    /* Dùng cho cả Edit và Delete */
     .action-icons {
         display: flex;
         justify-content: center;
-        gap: 8px;
+        gap: 12px;
+        font-size: 20px; /* kích thước icon */
     }
-    .action-icons i {
-        font-size: 17px;
-        margin: 0 6px;
+
+    /* Emoji Edit */
+    .icon-emoji {
+        text-decoration: none; /* loại bỏ gạch chân */
+        display: inline-block;
+        transform: rotate(0deg); /* dựng thẳng */
+        transition: transform 0.2s, color 0.2s;
+    }
+
+    .icon-emoji:hover {
+        transform: scale(1.2); /* phóng to khi hover */
+        color: #d44d2c;
+    }
+
+    /* Emoji Delete */
+    .icon-emoji-btn {
+        text-decoration: none;
+        display: inline-block;
+        background: none;
+        border: none;
+        padding: 0;
         cursor: pointer;
-        transition: 0.2s;
+        transition: transform 0.2s, color 0.2s;
     }
+
+    .icon-emoji-btn:hover {
+        transform: scale(1.2);
+        color: #b22222;
+    }
+
+
+
 </style>
 @endsection
