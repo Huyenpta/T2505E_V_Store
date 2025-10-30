@@ -10,20 +10,20 @@
     <div class="p-3">
         <div class="d-flex justify-content-start mb-3">
             <a href="{{ route('store.create') }}" class="btn btn-add">
-                <i class="fas fa-plus me-1"></i> Add New
+                <i class="fa-solid fa-plus me-1"></i> Add New
             </a>
         </div>
 
         <table class="table table-bordered text-center align-middle mb-0">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Item Code</th>
                     <th>Item Name</th>
                     <th>Quantity</th>
                     <th>Expired Date</th>
                     <th>Note</th>
-                    <th width="90">Action</th>
+                    <th width="100">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,19 +35,20 @@
                         <td>{{ number_format($item->quantity, 2) }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->expired_date)->format('d/m/Y') }}</td>
                         <td>{{ $item->note }}</td>
-                        <td class="action-icons">
-                            <a href="{{ route('store.edit', $item->id) }}" title="Edit">
-                                <i class="fas fa-pen edit"></i>
-                            </a>
-                            <form action="{{ route('store.destroy', $item->id) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" title="Delete"
-                                    style="border:none; background:none;"
-                                    onclick="return confirm('Delete this item?')">
-                                    <i class="fas fa-trash delete"></i>
-                                </button>
-                            </form>
+                        <td>
+                            <div class="action-icons">
+                                <a href="{{ route('store.edit', $item->id) }}" class="btn btn-warning btn-sm" title="Edit">
+                                    Edit
+                                </a>
+                                <form action="{{ route('store.destroy', $item->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete"
+                                        onclick="return confirm('Delete this item?')">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @empty
@@ -64,18 +65,17 @@
     </div>
 </div>
 
-{{-- Custom Styles --}}
 <style>
     .header-bar {
         background-color: #fff;
-        color: #e7ba3c;
+        color: #e75c3c;
         padding: 12px 20px;
-        font-weight: 900;
+        font-weight: 700;
         font-size: 20px;
         border-radius: 8px 8px 0 0;
         text-align: center;
+        border-bottom: 3px solid #e75c3c;
     }
-
     .btn-add {
         background-color: #e75c3c;
         color: #fff;
@@ -89,7 +89,6 @@
         background-color: #d24f2f;
         color: #fff;
     }
-
     table thead {
         background-color: #e75c3c;
         color: #fff;
@@ -97,20 +96,10 @@
     table tbody tr:nth-child(even) {
         background-color: #f9f9f9;
     }
-
-    /* 🎨 Sửa màu icon action */
-    .action-icons i {
-        font-size: 17px;
-        margin: 0 6px;
-        cursor: pointer;
-        transition: 0.2s;
-        
+    .action-icons {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
     }
 </style>
-
-
 @endsection
-
-@push('scripts')
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-@endpush
