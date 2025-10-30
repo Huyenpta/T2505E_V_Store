@@ -62,6 +62,7 @@
         <div class="mt-3">
             {{ $items->links() }}
         </div>
+        
     </div>
 </div>
 
