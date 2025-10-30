@@ -50,15 +50,15 @@
 </div>
 
 <style>
-    .header-bar {
-        background-color: #fff;
-        color: #e75c3c;
-        padding: 12px 20px;
-        font-weight: 700;
-        font-size: 20px;
-        border-radius: 8px 8px 0 0;
-        text-align: center;
-        border-bottom: 3px solid #e75c3c;
-    }
+.header-bar {
+    background-color: #fff;
+    color: #e75c3c;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    border-bottom: 3px solid #e75c3c;
+}
 </style>
 @endsection

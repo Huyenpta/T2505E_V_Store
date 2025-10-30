@@ -39,7 +39,7 @@ class StoreController extends Controller
     // Show edit form
     public function edit(ItemSale $store)
     {
-        return view('store.edit', ['item' => $store]);
+        return view('store.edit', compact('store')); // <-- Sửa ở đây
     }
 
     // Update item
