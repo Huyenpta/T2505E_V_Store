@@ -35,20 +35,18 @@
                         <td>{{ number_format($item->quantity, 2) }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->expired_date)->format('d/m/Y') }}</td>
                         <td>{{ $item->note }}</td>
-                        <td>
-                            <div class="action-icons">
-                                <a href="{{ route('store.edit', $item->id) }}" class="btn btn-warning btn-sm" title="Edit">
-                                    Edit
-                                </a>
-                                <form action="{{ route('store.destroy', $item->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete"
-                                        onclick="return confirm('Delete this item?')">
-                                        Delete
-                                    </button>
-                                </form>
-                            </div>
+                        <td class="action-icons">
+                            <a href="{{ route('store.edit', $item->id) }}" class="btn btn-warning btn-sm" title="Edit">
+                                Edit
+                            </a>
+                            <form action="{{ route('store.destroy', $item->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" title="Delete"
+                                    onclick="return confirm('Delete this item?')">
+                                    Delete
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @empty
@@ -62,21 +60,21 @@
         <div class="mt-3">
             {{ $items->links() }}
         </div>
-        
     </div>
 </div>
 
 <style>
     .header-bar {
-        background-color: #fff;
-        color: #e75c3c;
+        background-color: #e75c3c;
+        color: #fff;
         padding: 12px 20px;
         font-weight: 700;
         font-size: 20px;
         border-radius: 8px 8px 0 0;
         text-align: center;
-        border-bottom: 3px solid #e75c3c;
+        border-bottom: 3px solid #d44d2c;
     }
+
     .btn-add {
         background-color: #e75c3c;
         color: #fff;
@@ -90,6 +88,7 @@
         background-color: #d24f2f;
         color: #fff;
     }
+
     table thead {
         background-color: #e75c3c;
         color: #fff;
@@ -97,10 +96,17 @@
     table tbody tr:nth-child(even) {
         background-color: #f9f9f9;
     }
+
     .action-icons {
         display: flex;
         justify-content: center;
         gap: 8px;
+    }
+    .action-icons i {
+        font-size: 17px;
+        margin: 0 6px;
+        cursor: pointer;
+        transition: 0.2s;
     }
 </style>
 @endsection

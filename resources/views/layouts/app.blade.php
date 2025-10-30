@@ -27,6 +27,9 @@
             color: #fff !important;
             letter-spacing: 0.5px;
         }
+        .navbar-brand:hover {
+            color: #ffe6d5 !important;
+        }
         footer {
             margin-top: 40px;
             padding: 20px 0;
@@ -45,20 +48,52 @@
         .btn-primary:hover {
             background-color: #d44d2c;
         }
+
+        /* ===== BẢNG DỮ LIỆU & ICON HÀNH ĐỘNG ===== */
+        table thead {
+            background-color: #e75c3c;
+            color: #fff;
+        }
+        table tbody tr:hover {
+            background-color: #fff5f2;
+            transition: 0.2s;
+        }
+        table {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* ===== FORM ===== */
+        .form-control:focus {
+            border-color: #e75c3c;
+            box-shadow: 0 0 0 0.15rem rgba(231, 92, 60, 0.25);
+        }
+        .btn-outline-secondary {
+            border-color: #e75c3c;
+            color: #e75c3c;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #e75c3c;
+            color: #fff;
+        }
     </style>
 </head>
-
 <body>
 
     {{-- Navbar --}}
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('store.index') }}">V_Store</a>
+            <a class="navbar-brand" href="{{ route('store.index') }}"><span>V_Store</span> &nbsp;&nbsp; <span>Items</span></a>
         </div>
     </nav>
 
     {{-- Main container --}}
     <div class="container mt-4">
+
         {{-- Success Message --}}
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -89,5 +124,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

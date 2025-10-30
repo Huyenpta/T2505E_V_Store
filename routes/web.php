@@ -7,5 +7,4 @@ Route::get('/', function () {
     return redirect()->route('store.index');
 });
 
-
 Route::resource('store', StoreController::class);

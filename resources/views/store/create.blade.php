@@ -50,7 +50,6 @@
 
 <style>
     .header-bar {
-        
         background-color: #fff;
         color: #e75c3c;
         padding: 12px 20px;
